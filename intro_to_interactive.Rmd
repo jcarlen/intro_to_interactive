@@ -621,17 +621,3 @@ hchart(melt(txhousing.heatmap.data), "heatmap",
 ## Part II - Under the hood
 
 ![](./IMG/under_the_hood.png)
-
-<!--
-- General:
-- What is plotly (and related) actually doing -- how is R code translated to web (js, json, html, css)
-- Comparisons of interactive plotting packages (plotly, bokeh, higcharter) in terms of how they interactive with javascript. Important differences for performance?
-- Comparing backends (html, server, server running R), pros and cons?
--->
-
-<!--
-Specific limitations I've encountered:
-  - Converting a dotplot to plotly 
-  - Weird double legend (doesn't appear in workspace) and controlling legend symbol (see slide: Example - Interactive pizza plot)
-  * The plotly_json function has solved some of my customizationissues -- allows easy navigation of plot json
--->
