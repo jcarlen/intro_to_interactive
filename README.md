@@ -10,4 +10,4 @@ Data
 
 ###################################################################
 
-To follow along with the workshop, click the green "Clone or download" button to download the zip of all the files listed above. Unzip locally and in R set your working directory to the unzipped folder's location. 
+To follow along with the workshop, click the green "Clone or download" button to download the zipped folder of all the files listed above. Unzip locally and in R set your working directory to the unzipped folder's location. 
