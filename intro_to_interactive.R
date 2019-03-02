@@ -1,7 +1,11 @@
 # R script companion to intro_to_interactive.Rmd
 # Jane Carlen, March 2019
 
-setwd("~/Documents/DSI/intro_to_interactive") # UPDATE path to intro_to_interactive
+setwd("~/Documents/intro_to_interactive") # UPDATE path to intro_to_interactive
+
+# Some participants had issues with code not running. In that case try updating your versions of the packages listed below and your version of R and RStudio to the latest (This code was written in R 3.5.2). 
+
+# Some had issues with interactive plots not appearing in the viewer if a vpn was on. 
 
 ########################################## Basics ########################################################
 # 0. Conditionally (if not already installed) install packages ----
@@ -13,14 +17,20 @@ package_list = c(
   "ggplot2", "plotly", "crosstalk", "highcharter", "rbokeh", "DT", "listviewer", "widgetframe", "htmltools",
   # Additional packages for pizza example
   "sf", "emojifont", "USAboundaries", "USAboundariesData"
-  )
+)
 
 for (pkg in package_list) {
   if(!pkg %in% names(installed.packages()[,1])) {
     install.packages(pkg)
-    require(pkg)
   }
 }
+
+# load all packages
+lapply(package_list, require, character.only = TRUE)
+
+# Some users had problems with the USAboundaries package. If so try installing directly from github
+#devtools::install_github("ropensci/USAboundaries")
+#devtools::install_github("ropensci/USAboundariesData")
 
 # 1. Load Pizza Data ####
 
@@ -55,6 +65,7 @@ tx.ggplot
 tx.ggplotly = ggplotly(tx.ggplot, tooltip = c("x", "median", "group")) 
 
 tx.ggplotly
+
 # 2a. Exercise start (create texas housing subset data) ####
 txhousing.subset = txhousing %>%
   filter(year > 2006 & year < 2009, city %in% c("Dallas", "Houston", "San Antonio")) %>%
@@ -81,8 +92,7 @@ txhousing1.modified$x$data
 plotly_json(txhousing1.modified)
 
 txhousing3 = plot_ly(txhousing.subset) %>%
-  add_lines(x = ~interaction(month, year), y = ~median, color = ~city) %>%
-  add_markers(x = ~interaction(month, year), y = ~median, color = ~city, 
+  add_markers(x = ~interaction(month, year), y = ~median, symbol = ~city, 
               symbols = c("cross", "square", "triangle-down"))
 
 # 4. Data-plot-pipeline ####

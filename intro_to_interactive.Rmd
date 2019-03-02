@@ -7,8 +7,6 @@ output:
     incremental: false
 ---
 
-<!-- To do: simplify code to minimal examples/remove dependencies e.g. emojifont-->
-
 ## Goals
 
 Present logic and tools for interactively plotting *static* data
@@ -47,7 +45,6 @@ Data from 2018 midterm elections
 The data is in the intro_to_interactive folder. Load it as below and view fields.
 
 ```{r setup, echo = F, cache = T, warning = F, messsage = F, results = "hide"}
-
 # Packages to use code and txhousing examples
 # data processing
 library(dplyr)
@@ -429,7 +426,7 @@ subplot(p1, p2, titleX = TRUE, widths = c(0.3, 0.7)) %>% hide_legend() %>%
 ## Arranging linked plots {.smaller}
 - `subplot` in plotly   
     + A plotly `subplot` is a single plotly graph with multiple traces anchored on different axes    
-    + `subplot` returns a plotly object, so it can be applied recursively (subplots within subplots)    
+    + `subplot` returns a plotly object. It will convert ggplot objects to plotly and can be applied recursively (subplots within subplots)    
     + `ggplot2` facets (e.g. from `facet_wrap`) are implemented as subplots, which enables the synchronized zoom events on shared axes
     + [plotly-book.cpsievert.me/merging-plotly-objects.html](https://plotly-book.cpsievert.me/merging-plotly-objects.html)
 - `bscols` in crosstalk various htmlwidgets.
@@ -540,9 +537,14 @@ htmltools::save_html(pizza_linked, file = "pizza_linked.html", libdir = "lib")
 
 - `plotly` easily converts `ggplot` output to interactive graphics or you can build `plotly` objects from scratch using `plot_ly`
 - You can link plotly and objects using the `SharedData` class from `crosstalk`. Arrange plotly objects with `subplot`. Link and arrange other `hmtlwidgets` and arrange with `bscols`. 
-- Newer code, still under development. Unexpected limitations and bugs.
+- Newer code, under development. Unexpected limitations.
+- See more demos:
+```{r plotly_demos, eval = F, echo = T}
+demo(package = "plotly")
+demo("crosstalk-highlight-ggpairs", package = "plotly") 
+```
 - Related Packages - Bokeh (`rbokeh`), Highcharts (`highcharter`), `rCharts`, and more
-    + Plotly and Bokeh have established Python libraries too 
+- Plotly and Bokeh have established Python libraries too 
 
 ## Related Packages - Bokeh {.smaller}
 

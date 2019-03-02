@@ -41,7 +41,8 @@ plotly.option3 =
               color = I("red"), alpha = .5,
               text = ~Pizzas_delivered, hoverinfo = "text", showlegend = TRUE, name = "reports made") %>%
   layout(xaxis = list(range = c(-175, -67)), title = "Option 2 - Build in plotly", showlegend = TRUE)
-plotly.option2  
+
+plotly.option3
 
 # Notes:
 # Similar layering, syntactical differences
